@@ -22,4 +22,5 @@ return [
     'Zend\Validator',
     'Application',
     'Test',
+    'Market',
 ];
