@@ -9,9 +9,9 @@ return [
     'router' => [
         'routes' => [
             'market' => [
-                'type' => Literal::class,
+                'type' => Segment::class,
                 'options' => [
-                    'route'    => '/market',
+                    'route'    => '/market[/:action]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
@@ -27,5 +27,13 @@ return [
     ],
     'view_manager' => [
         'template_path_stack' => [__DIR__ . '/../view'],
+    ],
+    'controller_plugins' => [
+	'aliases' => [
+	    'ninetyDays' => Plugins\NinetyDays::class,
+	],
+	'factories' => [
+	    Plugins\NinetyDays::class => InvokableFactory::class,
+	],
     ],
 ];
