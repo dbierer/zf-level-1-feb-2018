@@ -8,7 +8,10 @@ class IndexController extends AbstractActionController
 {
     const PDF_TARZAN = __DIR__ . '/../../../../data/pdf/tarzan_of_the_apes.pdf';
 
-    public function indexAction()
+    public function indexAction() {
+        return new ViewModel($this->dayWeekMonth());
+    }
+    public function loginAction()
     {
         $userLoggedIn = $this->params()->fromQuery('isLoggedIn', 0);
         if (!$userLoggedIn) {
