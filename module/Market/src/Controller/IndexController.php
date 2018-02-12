@@ -10,7 +10,11 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel(['a' => 'AAA', 'b' => 'BBB', 'c' => 'CCC']);
+        $userLoggedIn = $this->params()->fromQuery('isLoggedIn', 0);
+        if (!$userLoggedIn) {
+            return $this->redirect()->toRoute('home');
+        }        
+        return new ViewModel($this->dayWeekMonth());
     }
     public function testAction()
     {
