@@ -1,14 +1,19 @@
 <?php
 namespace Market\Controller;
 
+use Market\Traits\CategoryTrait;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    use CategoryTrait;
     const PDF_TARZAN = __DIR__ . '/../../../../data/pdf/tarzan_of_the_apes.pdf';
 
     public function indexAction() {
+        return new ViewModel(['categories' => $this->categories]);
+    }
+    public function dayWeekMonthAction() {
         return new ViewModel($this->dayWeekMonth());
     }
     public function loginAction()
