@@ -1,6 +1,5 @@
-<div>
-<ul>
-<li><b>Today : </b><?= date('l, m D Y'); ?></li>
-<li><b>90 Out: </b><?= $this->ninety; ?></li>
-</ul>
-</div>
+<?php header('Content-Type: application/json'); ?>
+<?php echo json_encode([ 
+'Today' => date('l, m D Y'),
+'90 Out' => $this->ninety]); ?>
+

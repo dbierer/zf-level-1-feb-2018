@@ -3,7 +3,7 @@ namespace Market\Controller;
 
 use Market\Traits\CategoryTrait;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Zend\View\Model\ {ViewModel,JsonModel};
 
 class IndexController extends AbstractActionController
 {
@@ -37,9 +37,17 @@ class IndexController extends AbstractActionController
         }
         return new ViewModel(['heading' => $heading]);
     }
+    // example of bypassing the layout:
     public function ninetyAction()
     {
-        return new ViewModel(['ninety' => $this->ninetyDays()]);
+        $viewModel = new ViewModel(['ninety' => $this->ninetyDays()]);
+	$viewModel->setTerminal(TRUE);
+	return $viewModel;
+    }
+    public function ninetyJsonAction()
+    {
+        $jsonModel = new JsonModel(['today' => date('l, d M Y'), 'ninety' => $this->ninetyDays()]);
+	return $jsonModel;
     }
     public function pdfAction()
     {

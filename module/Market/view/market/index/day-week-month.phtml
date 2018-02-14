@@ -1,10 +1,11 @@
+<?php $month = 'February'; ?>
 <div>
 <h1>Logged In As: guest</h1>
 <hr>
 <table width="50%">
-<tr><th>Today</th><td><?= $this->today; ?></td></tr>
-<tr><th>Tomorrow</th><td><?= $this->tomorrow; ?></td></tr>
-<tr><th>Next Week</th><td><?= $this->week; ?></td></tr>
-<tr><th>Next Month</th><td><?= $this->month; ?></td></tr>
+<tr><th>Today</th><td><?= $this->today; ?></td><td><?= $this->vars()->today; ?></td></tr>
+<tr><th>Tomorrow</th><td><?= $this->tomorrow; ?></td><td><?= $tomorrow; ?></td></tr>
+<tr><th>Next Week</th><td><?= $this->week; ?></td><td><?= $week; ?></td></tr>
+<tr><th>Next Month</th><td><?= $this->month; ?></td><td><?= $month; ?></td></tr>
 </table>
 </div>

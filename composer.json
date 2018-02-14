@@ -23,7 +23,8 @@
 	"zendframework/zend-session": "*",
 	"zendframework/zend-captcha": "*",
 	"phpunit/phpunit": "*",
-	"zendframework/zend-test": "*"
+	"zendframework/zend-test": "*",
+        "zendframework/zend-json": "^3.1"
    },
     "autoload": {
         "psr-4": {
