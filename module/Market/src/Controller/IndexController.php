@@ -10,8 +10,11 @@ class IndexController extends AbstractActionController
     use CategoryTrait;
     const PDF_TARZAN = __DIR__ . '/../../../../data/pdf/tarzan_of_the_apes.pdf';
 
-    public function indexAction() {
-        return new ViewModel(['categories' => $this->categories]);
+    public function indexAction() 
+    {
+        $viewModel = new ViewModel(['categories' => $this->categories]);
+	$viewModel->setTemplate('market/index/default');
+        return $viewModel;
     }
     public function dayWeekMonthAction() {
         return new ViewModel($this->dayWeekMonth());

@@ -57,6 +57,9 @@ return [
         ],
     ],
     'view_manager' => [
+	'template_map' => [
+	    'market/index/default' => __DIR__ . '/../view/market/index/not_the_default.phtml',
+	],
         'template_path_stack' => [__DIR__ . '/../view'],
 	'strategies' => ['ViewJsonStrategy'],
     ],
