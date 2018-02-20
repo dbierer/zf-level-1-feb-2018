@@ -1,5 +1,9 @@
-<div>
-<h1>Post</h1>
+<h1>Online Market Posting</h1>
+<hr />
+<?php $this->postForm->prepare(); ?>
+<?= $this->form()->openTag($this->postForm); ?>
+<?= str_replace('span', 'h4', $this->formcollection($this->postForm)); ?>
+<?= $this->form()->closeTag(); ?>
 <hr>
-Placeholder for the PostController
+<?= $this->message; ?>
 </div>

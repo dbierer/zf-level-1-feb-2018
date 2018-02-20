@@ -14,6 +14,7 @@ class IndexController extends AbstractActionController
     {
         $viewModel = new ViewModel(['categories' => $this->categories]);
 	$viewModel->setTemplate('market/index/default');
+	//$viewModel->setTerminal(TRUE);
         return $viewModel;
     }
     public function dayWeekMonthAction() {

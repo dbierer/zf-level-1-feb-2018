@@ -56,6 +56,12 @@ return [
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            Form\PostForm::class => Form\Factory\PostFormFactory::class,
+            Form\PostFilter::class => Form\Factory\PostFilterFactory::class,
+        ],
+    ],
     'view_manager' => [
 	'template_map' => [
 	    'market/index/default' => __DIR__ . '/../view/market/index/not_the_default.phtml',
