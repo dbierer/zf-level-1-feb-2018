@@ -22,8 +22,7 @@ class PostForm extends Form
         $category = new Element\Select('category');
         $category->setLabel('Category')
                  ->setAttribute('title', 'Select a category')
-                 ->setValueOptions(array_combine($this->categories,
-                    $this->categories))
+                 ->setValueOptions(array_combine($this->categories, $this->categories))
                  ->setLabelAttributes(['style' => 'display: block']);
 
         $title = new Element\Text('title');

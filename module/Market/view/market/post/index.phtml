@@ -1,5 +1,7 @@
 <h1>Online Market Posting</h1>
 <hr />
+<?= $this->message; ?>
+<hr />
 <?php $this->postForm->prepare(); ?>
 <?= $this->form()->openTag($this->postForm); ?>
 <?= str_replace('span', 'h4', $this->formcollection($this->postForm)); ?>

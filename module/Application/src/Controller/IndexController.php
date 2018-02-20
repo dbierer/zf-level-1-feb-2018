@@ -14,6 +14,12 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+	// get controller event manager
+	$evm1 = $this->getEventManager();
+        $evm1->trigger('custom-event', $this);
+	// get MVC event manager
+	$evm2 = $this->getEvent()->getApplication()->getEventManager();
+        $evm2->trigger('custom-event', $this);
         return new ViewModel();
     }
 }

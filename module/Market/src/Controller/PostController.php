@@ -16,9 +16,9 @@ class PostController extends AbstractActionController
             $data = $this->params()->fromPost();
             $this->postForm->setData($data);
             if ($this->postForm->isValid()) {
-                $message = 'SUCCESS ... You Are In!';
+                $message = '<h1 style="color:green;">SUCCESS ... You Are In!</h1>';
             } else {
-                $message = 'SORRY ... Try Again!';
+                $message = '<h1 style="color:red;">SORRY ... You Are Out!</h1>';
             }
         }
         return new ViewModel(['postForm' => $this->postForm, 'message' => $message]);
