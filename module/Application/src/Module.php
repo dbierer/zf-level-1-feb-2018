@@ -24,10 +24,19 @@ class Module
 	$shared = $evm->getSharedManager();
         $shared->attach(IndexController::class, 'custom-event', [$this, 'onTest'], 99);
         $evm->trigger('custom-event', $this);
+        // EVENTS LAB
+        $evm->attach(MvcEvent::EVENT_DISPATCH, [$this, 'injectCategoriesIntoLayout'], 88);
     }
     
     public function onTest($e)
     {
         error_log('Event Class: ' . get_class($e) . ': Triggering Class: ' . get_class($e->getTarget()));
+    }
+
+    public function injectCategoriesIntoLayout(MvcEvent $e)
+    {
+        $vm = $e->getViewModel();
+        $sm = $e->getApplication()->getServiceManager();
+        $vm->setVariable('categories', $sm->get('categories'));
     }
 }
