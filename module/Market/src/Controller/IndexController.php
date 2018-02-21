@@ -1,18 +1,25 @@
 <?php
 namespace Market\Controller;
 
-use Market\Traits\CategoryTrait;
+use Market\Traits\ {CategoryTrait,AdapterTrait};
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ {ViewModel,JsonModel};
-
+use Zend\Db\Sql\ {Sql,Where};
 class IndexController extends AbstractActionController
 {
     use CategoryTrait;
+    use AdapterTrait;
     const PDF_TARZAN = __DIR__ . '/../../../../data/pdf/tarzan_of_the_apes.pdf';
 
     public function indexAction() 
     {
-        $viewModel = new ViewModel(['categories' => $this->categories]);
+	$list = $this->adapter->query('SELECT * FROM listings', []);
+	$sql = new \Zend\Db\Sql\Sql($this->adapter);
+        $select = $sql->select()->where('price < 100')->from('listings')->order('category');
+	$statement = $sql->prepareStatementForSqlObject($select);
+	$results = $statement->execute();
+	// SELECT * FROM listings WHERE 
+        $viewModel = new ViewModel(['categories' => $this->categories, 'list' => $results]);
 	$viewModel->setTemplate('market/index/default');
 	//$viewModel->setTerminal(TRUE);
         return $viewModel;
@@ -61,5 +68,18 @@ class IndexController extends AbstractActionController
 	$contents = file_get_contents(self::PDF_TARZAN);
 	$response->setBody($contents);
 	return $response;
+    }
+    public function adapterAction()
+    {
+	$sql = new Sql($this->adapter);
+        $select = $sql->select();
+	$select->from('products')->where(
+		(new Where())->greaterThanOrEqualTo('qty_oh', 10)
+		             ->lessThan('cost', 100)
+        );
+	echo '<pre>';
+	echo $select->getSqlString($this->adapter->getPlatform());
+	echo '</pre>';
+	return $this->getResponse();
     }
 }

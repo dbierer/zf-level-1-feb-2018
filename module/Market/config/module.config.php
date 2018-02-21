@@ -61,11 +61,20 @@ return [
             Form\PostForm::class => Form\Factory\PostFormFactory::class,
             Form\PostFilter::class => Form\Factory\PostFilterFactory::class,
         ],
+	'services' => [
+	    'market-db-config' => [
+		'driver' => 'PDO',
+		'dsn'	 => 'mysql:host=localhost;dbname=onlinemarket',
+		'username' => 'vagrant',
+		'password' => 'vagrant',
+		'driver_options' => [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION],
+	    ],
+	],
     ],
     'view_manager' => [
-	'template_map' => [
-	    'market/index/default' => __DIR__ . '/../view/market/index/not_the_default.phtml',
-	],
+	//'template_map' => [
+	//    'market/index/default' => __DIR__ . '/../view/market/index/not_the_default.phtml',
+	//],
         'template_path_stack' => [__DIR__ . '/../view'],
 	'strategies' => ['ViewJsonStrategy'],
     ],

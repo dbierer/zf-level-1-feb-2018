@@ -1,6 +1,9 @@
 <div>
 <h1>DEFAULT</h1>
 <hr>
-<?php echo $this->htmlList($this->categories); ?>
-<?php //var_dump($this->categories); ?>
+<pre>
+<?php foreach ($this->list as $item) : ?>
+<?php var_dump($item); ?>
+<?php endforeach; ?>
+</pre>
 </div>

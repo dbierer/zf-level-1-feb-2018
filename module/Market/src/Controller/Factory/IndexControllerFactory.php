@@ -18,6 +18,7 @@ class IndexControllerFactory implements FactoryInterface
     {
         $controller = new IndexController();
         $controller->setCategories($container->get('categories'));
+	$controller->setAdapter($container->get('market-db-adapter'));
         return $controller;
     }
 }
