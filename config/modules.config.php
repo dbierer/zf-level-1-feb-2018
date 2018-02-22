@@ -23,4 +23,5 @@ return [
     'Application',
     'Test',
     'Market',
+    'Model',
 ];

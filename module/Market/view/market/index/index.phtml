@@ -1,6 +1,5 @@
 <div>
-<h1>Categories</h1>
+<h1>Latest Item</h1>
 <hr>
-<?php echo $this->htmlList($this->categories); ?>
-<?php //var_dump($this->categories); ?>
+<?= $this->partial('partials/item', ['item' => $this->item]); ?>
 </div>

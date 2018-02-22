@@ -5,7 +5,7 @@ use Market\Form\PostForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class PostController extends AbstractActionController
+class PostController extends Base
 {
     protected $postForm;
     public function indexAction()
@@ -16,7 +16,9 @@ class PostController extends AbstractActionController
             $data = $this->params()->fromPost();
             $this->postForm->setData($data);
             if ($this->postForm->isValid()) {
-                $message = '<h1 style="color:green;">SUCCESS ... You Are In!</h1>';
+                if ($this->listingsTable->save($this->postForm->getData())) {
+                    $this->flashMessenger()->add('<h1 style="color:green;">SUCCESS ... New Item Added!</h1>');
+                    return $this->redirect()->toRoute('market');
             } else {
                 $message = '<h1 style="color:red;">SORRY ... You Are Out!</h1>';
             }

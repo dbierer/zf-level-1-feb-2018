@@ -31,9 +31,38 @@ return [
                             'route'    => '/view',
                             'defaults' => [
                                 'controller' => Controller\ViewController::class,
-                                'action'     => 'index',
+                                'action' => 'index',
                             ],
                         ],
+/*
+                        'may_terminate' => FALSE,
+                        'child_routes' => [
+                            'item' => [
+                                'type' => Segment::class,
+                                'options' => [
+                                    'route' => '/item[/:itemId]',
+                                    'constraints' => [
+                                        'itemId' => '[0-9]*',
+                                    ],
+                                    'defaults' => [
+                                        'action'     => 'item',
+                                    ],
+                                ],
+                            ],
+                            'category' => [
+                                'type' => Segment::class,
+                                'options' => [
+                                    'route' => '/category[/:category]',
+                                    'constraints' => [
+                                        'category' => '[a-z]*',
+                                    ],
+                                    'defaults' => [
+                                        'action'     => 'index',
+                                    ],
+                                ],
+                            ],
+                        ],
+*/
                     ],
                     'post' => [
                         'type' => Segment::class,
@@ -87,5 +116,13 @@ return [
 	    Plugins\NinetyDays::class => InvokableFactory::class,
 	    Plugins\DayWeekMonth::class => InvokableFactory::class,
 	],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            Helper\LeftLinks::class => InvokableFactory::class
+        ],
+        'aliases' => [
+            'leftLinks' => Helper\LeftLinks::class
+        ],
     ],
 ];

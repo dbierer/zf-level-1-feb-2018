@@ -30,7 +30,8 @@
         "psr-4": {
             "Application\\": "module/Application/src/",
             "Test\\": "module/Test/src/",
-            "Market\\": "module/Market/src/"
+            "Market\\": "module/Market/src/",
+            "Model\\": "module/Model/src/"
         }
     },
     "autoload-dev": {

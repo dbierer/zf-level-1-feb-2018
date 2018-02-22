@@ -1,6 +1,7 @@
 <?php
 namespace Market;
 
+use Model\Interfaces\ListingsTableAwareInterface;
 use Zend\Db\Adapter\Adapter;
 class Module
 {
@@ -10,6 +11,18 @@ class Module
         return include __DIR__ . '/../config/module.config.php';
     }
 
+    public function getControllerConfig()
+    {
+        return [
+            'initializers' => [
+                'market-inject-listings-table' => function ($container, $instance) {
+                    if ($instance instanceof ListingsTableAwareInterface) {
+                        $instance->setListingsTable($container->get('model-listings-table'));
+                    }
+                },
+             ],
+        ];
+    }
     public function getServiceConfig()
     {
 	return [
