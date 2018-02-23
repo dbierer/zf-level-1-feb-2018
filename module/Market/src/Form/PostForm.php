@@ -55,7 +55,7 @@ class PostForm extends Form
             ->setAttribute('title', 'Enter as "city,country" using 2 letter ISO code for country')
             ->setAttribute('id', 'cityCode')
             ->setAttribute('placeholder', 'City Name,CC')
-            ->setLabelAttributes(['style'=>'display:inline;font-size:14pt;font-weight:normal;margin-right: 20px;']);
+            ->setLabelAttributes(['style'=>'display:block;']);
 
         $name = new Element\Text('contact_name');
         $name->setLabel('Contact Name ')

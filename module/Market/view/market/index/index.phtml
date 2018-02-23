@@ -2,4 +2,6 @@
 <h1>Latest Item</h1>
 <hr>
 <?= $this->partial('partials/item', ['item' => $this->item]); ?>
+<hr>
+<?php if ($this->messages) echo '<h4>Messages</h4><br>' . $this->htmlList($thisMessages); ?>
 </div>

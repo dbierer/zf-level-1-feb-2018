@@ -10,6 +10,7 @@ class ViewController extends Base
     {
         $category = $this->params()->fromRoute('category');
         $list = $this->listingsTable->findByCategory($category);
+        //echo __METHOD__ . ':<pre>' . var_export($list, TRUE) . '</pre>'; exit;
         return new ViewModel(['category' => $category, 'listing' => $list]);
     }
     public function itemAction() 

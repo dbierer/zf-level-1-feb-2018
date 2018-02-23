@@ -11,18 +11,20 @@ class PostController extends Base
     public function indexAction()
     {
         $data = [];
-        $message = '';
+        $message = [];
         if ($this->getRequest()->isPost()) {
             $data = $this->params()->fromPost();
             $this->postForm->setData($data);
             if ($this->postForm->isValid()) {
                 if ($this->listingsTable->save($this->postForm->getData())) {
-                    $this->flashMessenger()->add('<h1 style="color:green;">SUCCESS ... New Item Added!</h1>');
+                    $this->flashMessenger()->addMessage('<h1 style="color:green;">SUCCESS ... New Item Added!</h1>');
                     return $this->redirect()->toRoute('market');
+		}
             } else {
-                $message = '<h1 style="color:red;">SORRY ... You Are Out!</h1>';
+                $message = ['<h1 style="color:red;">SORRY ... You Are Out!</h1>'];
             }
         }
+	array_merge($message, $this->flashMessenger()->getMessages());
         return new ViewModel(['postForm' => $this->postForm, 'message' => $message]);
     }    
     public function setPostForm(PostForm $form) 

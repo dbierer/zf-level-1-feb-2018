@@ -32,10 +32,10 @@ return [
                             'defaults' => [
                                 'controller' => Controller\ViewController::class,
                                 'action' => 'index',
+                                'category' => 'free',
                             ],
                         ],
-/*
-                        'may_terminate' => FALSE,
+                        'may_terminate' => TRUE,
                         'child_routes' => [
                             'item' => [
                                 'type' => Segment::class,
@@ -62,7 +62,6 @@ return [
                                 ],
                             ],
                         ],
-*/
                     ],
                     'post' => [
                         'type' => Segment::class,

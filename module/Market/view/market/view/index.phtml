@@ -1,5 +1,5 @@
 <div>
-<h1>View</h1>
+<h1>Online Market Listings by Category</h1>
 <hr>
-Placeholder for the ViewController
+<?= $this->partial('partials/list', ['listing' => $this->listing, 'category' => $this->category]); ?>
 </div>

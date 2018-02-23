@@ -13,7 +13,7 @@ class IndexController extends Base
 
     public function indexAction() 
     {
-        $viewModel = new ViewModel(['item' => $this->listingsTable->findLatest()]);
+        $viewModel = new ViewModel(['item' => $this->listingsTable->findLatest(), 'messages' => $this->flashMessenger()->getMessages()]);
         return $viewModel;
     }
     public function dayWeekMonthAction() {
